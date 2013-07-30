@@ -1,0 +1,19 @@
+{
+  "name": "LinkedIn Scraper",
+  "version": "1.1",
+  "description": "Collect LinkedIn contacts with this convenient Chrome extension.",
+  "background": {
+    "persistent": true,
+    "scripts": ["background.js"]
+  },
+  "permissions": ["tabs", "http://linkedin.com/"],
+    "content_scripts": [{
+  	"matches": ["http://linkedin.com/*", "https://linkedin.com/*", "https://www.linkedin.com/*", "http://www.linkedin.com/*"],
+    "js": ["jquery.min.js", "cloudmine-0.9.10.js", "record_id.js"],
+    "run_at": "document_end"
+  }],
+    "browser_action": {
+     "default_title": "Save this contact!"
+  },
+  "manifest_version": 2
+}
