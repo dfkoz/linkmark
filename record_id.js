@@ -38,6 +38,7 @@ function recordClick() {
 	var url = document.URL;
 	var datetime = new Date().getTime();
 	
+	
 	var data = {
 		'public_profile': public_profile,
 		'querystring_id': querystring_id,
@@ -47,18 +48,18 @@ function recordClick() {
 		'datetime': datetime,
 		'test': true		
 	};
-	
-	console.log(data);
-	
+
+		
 	ws.update(datetime, data).on('success', function(data, response) {
 		// Finally, send a message to update the badge.
 		console.log(response);
 		chrome.extension.sendMessage({action:'update_icon', ct: saved_count});
+	}).on("error", function(data, apicall) {
+		console.log("Failure: " + apicall.status)
+	}).on("complete", function(data, apicall) {
+		console.log("Complete: " + apicall.status);
+		chrome.extension.sendMessage({action:'update_icon', ct: saved_count});
 	});
 
-
-
-	
-	console.log("Finished. Supposedly.");
-
+	console.log("Upload sent.");
 };
