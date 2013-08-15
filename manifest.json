@@ -6,6 +6,9 @@
     "persistent": true,
     "scripts": ["background.js"]
   },
+  "icons": {
+  	"128": "large_qloud.png"
+  },
   "permissions": ["tabs", "http://linkedin.com/"],
     "content_scripts": [{
   	"matches": ["http://linkedin.com/*", "https://linkedin.com/*", "https://www.linkedin.com/*", "http://www.linkedin.com/*"],
@@ -13,7 +16,8 @@
     "run_at": "document_end"
   }],
     "browser_action": {
-     "default_title": "Save this contact!"
+     "default_title": "Save this contact!",
+     "default_icon": "qloud.png"
   },
   "manifest_version": 2
 }
